@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="timer1 = setTimeout('colorizeElement(p1)',1000)">
+    <p id="p1" style="width: 200px; font-size: 40px;">
+        text
+    </p>
+    <input type="button" value="Покрасить" onclick="timer1 = setTimeout('colorizeElement(p1)',1000)"> 
+    <input type="button" value="Остановить" onclick="stop(p1)"> 
+    <script>
+
+        n = 5;
+        colors =[]
+        const hexsymbols = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
+        function getRandomDigits(len=6)
+        {
+            s = "";
+            for (let i = 0; i<=n;i++)    
+            {
+            num =  Math.floor(Math.random()*16);
+            s+=hexsymbols[num];
+            }
+
+            return "#"+s;
+        }
+        // p1.style.backgroundColor = getRandomDigits();
+        // console.log(getRandomDigits());
+       function colorizeElement(elem=p1){
+
+           col = getRandomDigits();
+           elem.style.backgroundColor = col;
+           elem.innerHTML = col;
+           timer1 = setTimeout("colorizeElement()",20)
+           console.log(timer1);
+       }
+       function stop(elem=p1){
+           console.log(timer1);
+           clearTimeout(timer1);
+
+           //доделать: заменить 2 кропки на одну
+
+       }
+// getElementBy
+    </script>
+</body>
+</html>
